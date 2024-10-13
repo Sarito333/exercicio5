@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+    <style>
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#" onclick="showTab('cronometro')">Cronômetro</a></li>
+        <li><a href="#" onclick="showTab('slideShow')">Slide Show</a></li>
+        <li><a href="#" onclick="showTab('tabuada')">Tabuada</a></li>
+    </ul>
+    <div id="cronometro" class="tab">
+        <h2>Cronômetro</h2>
+        <p id="timer">00:00:00</p>
+        <script>
+            let seconds = 0;
+            let timerInterval = setInterval(function() {
+                let hours = Math.floor(seconds / 3600);
+                let minutes = Math.floor((seconds % 3600) / 60);
+                let secondsRemaining = seconds % 60;
+                let timerText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
+                document.getElementById("timer").innerHTML = timerText;
+                seconds++;
+            }, 1000);
+        </script>
+    </div>
+    <div id="slideShow" class="tab">
+        <h2>Slide Show</h2>
+        <img id="slideImage" src="image1.jpg" alt="Slide Image">
+        <button onclick="previousImage()">Anterior</button>
+        <button onclick="nextImage()">Próximo</button>
+        <script>
+            let images = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg"];
+            let currentIndex = 0;
+            function previousImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                document.getElementById("slideImage").src = images[currentIndex];
+            }
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                document.getElementById("slideImage").src = images[currentIndex];
+            }
+        </script>
+    </div>
+    <div id="tabuada" class="tab">
+        <h2>Tabuada</h2>
+        <input type="number" id="numberInput" placeholder="Digite um número">
+        <button onclick="calculateTabuada()">Calcular Tabuada</button>
+        <div id="tabuadaResult"></div>
+        <script>
+            function calculateTabuada() {
+                let number = document.getElementById("numberInput").value;
+                let result = "";
+                for (let i = 0; i <= 10; i++) {
+                    result += `${number} x ${i} = ${number * i}<br>`;
+                }
+                document.getElementById("tabuadaResult").innerHTML = result;
+            }
+        </script>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            let tabs = document.querySelectorAll(".tab");
+            tabs.forEach(function(tab) {
+                tab.classList.remove("active");
+            });
+            document.getElementById(tabId).classList.add("active");
+        }
+    </script>
+</body>
+</html>

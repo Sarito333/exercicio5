@@ -1,0 +1,21 @@
+table {
+    background-color: #CCCCCC;
+    border-collapse: collapse;
+  }
+  
+  th {
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #000033;
+    color: #CCCCCC;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+  }
+  
+  td {
+    font-size: 14px;
+    background-color: #000066;
+    color: #CCCCCC;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+  }

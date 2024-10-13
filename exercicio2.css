@@ -1,0 +1,13 @@
+table {
+    border-collapse: collapse; 
+}
+td {
+    padding: 10px; 
+    color: black; 
+}
+.par {
+    background-color: green; 
+}
+.impar {
+    background-color: yellow; 
+}

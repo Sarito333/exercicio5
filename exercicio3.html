@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="texto" placeholder="Digite uma palavra ou frase">
+        <button id="maiuscula">Maiúscula</button>
+        <button id="separar">Separar</button>
+    </form>
+    <div id="resultado"></div>
+
+    <script>
+        const textoInput = document.getElementById("texto");
+        const maiusculaButton = document.getElementById("maiuscula");
+        const separarButton = document.getElementById("separar");
+        const resultadoDiv = document.getElementById("resultado");
+
+        maiusculaButton.addEventListener("click", function() {
+            const texto = textoInput.value;
+            resultadoDiv.innerHTML = texto.toUpperCase();
+        });
+
+        separarButton.addEventListener("click", function() {
+            const texto = textoInput.value;
+            const palavras = texto.split(" ");
+            let resultado = "";
+            for (let i = 0; i < palavras.length; i++) {
+                resultado += palavras[i] + "<br>";
+            }
+            resultadoDiv.innerHTML = resultado;
+        });
+    </script>
+</body>
+</html>

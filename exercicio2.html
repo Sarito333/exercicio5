@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+    <link rel="stylesheet" type="text/css" href="exercicio2.css">
+</head>
+<body>
+    <script>
+        let linhas = parseInt(prompt("Digite a quantidade de linhas:"));
+        let colunas = parseInt(prompt("Digite a quantidade de colunas:"));
+        
+        let tabela = "<table>";
+
+        for (let i = 0; i < linhas; i++) {
+            tabela += "<tr>";
+            for (let j = 0; j < colunas; j++) {
+            
+                let classe = (j % 2 === 0) ? "par" : "impar";
+                tabela += `<td class="${classe}">(${i + 1}, ${j + 1})</td>`;
+            }
+            tabela += "</tr>";
+        }
+
+        tabela += "</table>";
+        document.write(tabela);
+    </script>
+</body>
+</html>

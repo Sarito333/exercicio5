@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <style>
+        .button {
+            width: 25%;
+            height: 50px;
+            font-size: 24px;
+            margin: 5px;
+        }
+    </style>
+    
+</head>
+<body>
+    <input type="text" id="display" readonly>
+    <div>
+        <button class="button" onclick="addDigit('7')">7</button>
+        <button class="button" onclick="addDigit('8')">8</button>
+        <button class="button" onclick="addDigit('9')">9</button>
+        <button class="button" onclick="addOperator('/')">/</button>
+    </div>
+    <div>
+        <button class="button" onclick="addDigit('4')">4</button>
+        <button class="button" onclick="addDigit('5')">5</button>
+        <button class="button" onclick="addDigit('6')">6</button>
+        <button class="button" onclick="addOperator('*')"> *</button>
+    </div>
+    <div>
+        <button class="button" onclick="addDigit('1')">1</button>
+        <button class="button" onclick="addDigit('2')">2</button>
+        <button class="button" onclick="addDigit('3')">3</button>
+        <button class="button" onclick="addOperator('-')">-</button>
+    </div>
+    <div>
+        <button class="button" onclick="addDigit('0')">0</button>
+        <button class="button" onclick="addDigit('.')">.</button>
+        <button class="button" onclick="calculate()">=</button>
+        <button class="button" onclick="addOperator('+')">+</button>
+    </div>
+    <div>
+        <button class="button" onclick="pow()">x^y</button>
+        <button class="button" onclick="round()">Round</button>
+        <button class="button" onclick="sqrt()">√x</button>
+        <button class="button" onclick="clearDisplay()">C</button>
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+
+        function addDigit(digit) {
+            display.value += digit;
+        }
+
+        function addOperator(operator) {
+            display.value += operator;
+        }
+
+        function calculate() {
+            try {
+                let result = eval(display.value);
+                display.value = result;
+            } catch (error) {
+                display.value = "Erro";
+            }
+        }
+
+        function pow() {
+            let base = parseFloat(prompt("Digite a base:"));
+            let exponent = parseFloat(prompt("Digite o expoente:"));
+            let result = Math.pow(base, exponent);
+            display.value = result;
+        }
+
+        function round() {
+            let number = parseFloat(prompt("Digite um número:"));
+            let result = Math.round(number);
+            display.value = result;
+        }
+
+        function sqrt() {
+            let number = parseFloat(prompt("Digite um número:"));
+            let result = Math.sqrt(number);
+            display.value = result;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+    </script>
+</body>
+</html>
